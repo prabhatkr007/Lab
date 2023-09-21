@@ -1,41 +1,32 @@
 #!/bin/bash
 
-# Function to check file attributes
-check_file_attributes() {
+# Function to change file permissions
+change_file_permissions() {
     local file_path="$1"
-    
+    local mode="$2"
+
     if [ -e "$file_path" ]; then
-        echo "File Attributes for $file_path"
-        echo "-------------------------------"
-        stat "$file_path"
+        chmod "$mode" "$file_path"
+        echo "Permissions for $file_path changed to $(stat -c '%a' "$file_path")."
     else
         echo "File not found: $file_path"
     fi
 }
 
-# Function to check process attributes
-check_process_attributes() {
-    local pid="$1"
-    
-    echo "Process Attributes for PID: $pid"
-    echo "-----------------------------"
-    
-    ps -p "$pid" -o pid,ppid,pgid,cmd,%cpu,%mem,stime,etime,state,nice,user
-}
-
 # Main script
-read -p "Enter the path to a file you want to check: " file_path
-read -p "Enter the PID of a process you want to check: " process_pid
+read -p "Enter the path to the file you want to modify: " file_path
 
-if [ -n "$file_path" ]; then
-    check_file_attributes "$file_path"
-else
-    echo "Invalid file path."
+if [ -z "$file_path" ]; then
+    echo "Invalid input. Please provide a valid file path."
+    exit 1
 fi
 
-if [[ "$process_pid" =~ ^[0-9]+$ ]]; then
-    check_process_attributes "$process_pid"
-else
-    echo "Invalid process PID."
+read -p "Enter the new permissions as an octal number (e.g., 755): " mode
+
+if [[ ! "$mode" =~ ^[0-7]{3,4}$ ]]; then
+    echo "Invalid input. Please enter a valid octal permission value."
+    exit 1
 fi
+
+change_file_permissions "$file_path" "$mode"
 
