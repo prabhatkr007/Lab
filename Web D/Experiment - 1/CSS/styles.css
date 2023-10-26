@@ -1,0 +1,10 @@
+/* styles.css */
+h3 {
+    color: purple;
+}
+
+.info-box {
+    border: 1px solid blue;
+    padding: 10px;
+    background-color: lightcyan;
+}

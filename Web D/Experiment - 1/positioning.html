@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Positioning Example</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 300px;
+            border: 2px solid black;
+            position: relative;
+            margin: auto;
+        }
+
+        .absolute {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: red;
+            padding: 10px;
+        }
+
+        .relative {
+            position: relative;
+            top: 40px;
+            left: 40px;
+            background-color: blue;
+            color: white;
+            padding: 10px;
+        }
+
+        .fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: green;
+            color: white;
+            padding: 10px;
+        }
+
+        .static {
+            position: static;
+            background-color: yellow;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Positioning Example</h1>
+    <div class="container">
+        <div class="absolute">Absolute Position</div>
+        <div class="relative">Relative Position</div>
+        <div class="fixed">Fixed Position</div>
+        <div class="static">Static Position</div>
+    </div>
+</body>
+</html>
