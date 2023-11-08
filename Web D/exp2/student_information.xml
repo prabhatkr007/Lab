@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<studentInformation>
+    <student>
+        <name>John Doe</name>
+        <age>20</age>
+        <gender>Male</gender>
+        <address>
+            <street>123 Main St</street>
+            <city>Anytown</city>
+            <state>CA</state>
+            <zipcode>12345</zipcode>
+        </address>
+        <contact>
+            <email>john.doe@example.com</email>
+            <phone>123-456-7890</phone>
+        </contact>
+        <courses>
+            <course>
+                <name>Mathematics</name>
+                <grade>A</grade>
+            </course>
+            <course>
+                <name>Science</name>
+                <grade>B</grade>
+            </course>
+        </courses>
+    </student>
+</studentInformation>

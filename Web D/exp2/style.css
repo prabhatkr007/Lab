@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.student {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.age, .gender {
+    font-style: italic;
+}
+
+.address, .contact, .courses {
+    margin-top: 10px;
+}
+
+.course {
+    margin-bottom: 10px;
+}
+

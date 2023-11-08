@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Analyzer</title>
+</head>
+<body>
+    <textarea id="inputText" rows="4" cols="50"></textarea><br><br>
+    <button onclick="analyzeText()">Submit</button>
+
+    <script>
+        function analyzeText() {
+            var text = document.getElementById('inputText').value;
+            var charCount = text.length;
+            var wordCount = text.trim().split(/\s+/).length;
+            var lineCount = text.split(/\r\n|\r|\n/).length;
+
+            alert("Number of characters: " + charCount +
+                "\nNumber of words: " + wordCount +
+                "\nNumber of lines: " + lineCount);
+        }
+    </script>
+</body>
+</html>

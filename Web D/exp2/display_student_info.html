@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display XML in HTML using Data Island</title>
+</head>
+<body>
+
+    <h2>Student Information</h2>
+    <div id="studentInfo"></div>
+
+    <script>
+        var xmlString = `<?xml version="1.0" encoding="UTF-8"?>
+        <studentInformation>
+            <student>
+                <name>John Doe</name>
+                <age>20</age>
+                <gender>Male</gender>
+                <address>
+                    <street>123 Main St</street>
+                    <city>Anytown</city>
+                    <state>CA</state>
+                    <zipcode>12345</zipcode>
+                </address>
+                <contact>
+                    <email>john.doe@example.com</email>
+                    <phone>123-456-7890</phone>
+                </contact>
+                <courses>
+                    <course>
+                        <name>Mathematics</name>
+                        <grade>A</grade>
+                    </course>
+                    <course>
+                        <name>Science</name>
+                        <grade>B</grade>
+                    </course>
+                </courses>
+            </student>
+        </studentInformation>`;
+
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+        var studentName = xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+        var studentAge = xmlDoc.getElementsByTagName("age")[0].childNodes[0].nodeValue;
+        var studentGender = xmlDoc.getElementsByTagName("gender")[0].childNodes[0].nodeValue;
+        var studentAddress = xmlDoc.getElementsByTagName("street")[0].childNodes[0].nodeValue + ", " +
+                            xmlDoc.getElementsByTagName("city")[0].childNodes[0].nodeValue + ", " +
+                            xmlDoc.getElementsByTagName("state")[0].childNodes[0].nodeValue + " - " +
+                            xmlDoc.getElementsByTagName("zipcode")[0].childNodes[0].nodeValue;
+        var studentEmail = xmlDoc.getElementsByTagName("email")[0].childNodes[0].nodeValue;
+        var studentPhone = xmlDoc.getElementsByTagName("phone")[0].childNodes[0].nodeValue;
+
+        var courses = xmlDoc.getElementsByTagName("course");
+        var coursesHTML = "";
+        for (var i = 0; i < courses.length; i++) {
+            var courseName = courses[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+            var courseGrade = courses[i].getElementsByTagName("grade")[0].childNodes[0].nodeValue;
+            coursesHTML += "<div><strong>" + courseName + "</strong> - Grade: " + courseGrade + "</div>";
+        }
+
+        var studentInfoElement = document.getElementById("studentInfo");
+        studentInfoElement.innerHTML = "<strong>Name:</strong> " + studentName + "<br>" +
+            "<strong>Age:</strong> " + studentAge + "<br>" +
+            "<strong>Gender:</strong> " + studentGender + "<br>" +
+            "<strong>Address:</strong> " + studentAddress + "<br>" +
+            "<strong>Email:</strong> " + studentEmail + "<br>" +
+            "<strong>Phone:</strong> " + studentPhone + "<br>" +
+            "<strong>Courses:</strong> <br>" + coursesHTML;
+    </script>
+
+</body>
+</html>

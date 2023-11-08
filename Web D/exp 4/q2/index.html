@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Country Capital Lookup</title>
+    <style>
+        #capital {
+            font-style: italic;
+            color: #3366cc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <select id="countrySelect" onchange="showCapital()">
+        <option value="default" selected disabled>Select a country</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="France">France</option>
+        <option value="Germany">Germany</option>
+        <option value="Japan">Japan</option>
+    </select>
+    <p id="capital"></p>
+
+    <script>
+        function showCapital() {
+            var selectBox = document.getElementById("countrySelect");
+            var selectedCountry = selectBox.options[selectBox.selectedIndex].value;
+            var capitalDisplay = document.getElementById("capital");
+
+            if (selectedCountry === "USA") {
+                capitalDisplay.innerHTML = "Washington D.C.";
+            } else if (selectedCountry === "UK") {
+                capitalDisplay.innerHTML = "London";
+            } else if (selectedCountry === "France") {
+                capitalDisplay.innerHTML = "Paris";
+            } else if (selectedCountry === "Germany") {
+                capitalDisplay.innerHTML = "Berlin";
+            } else if (selectedCountry === "Japan") {
+                capitalDisplay.innerHTML = "Tokyo";
+            } else {
+                capitalDisplay.innerHTML = "";
+            }
+        }
+    </script>
+</body>
+</html>
